@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.poetrytour.dao.UserDAO">
+    <resultMap id="UserResultMap" type="com.example.poetrytour.model.User">
+        <id column="user_id" property="user_id"/>
+        <result column="user_tel" property="user_tel"/>
+        <result column="user_name" property="user_name"/>
+        <result column="register_time" property="register_time"/>
+        <result column="user_password" property="user_password"/>
+        <result column="avatar" property="avatar"/>
+        <result column="sex" property="sex"/>
+        <result column="intro" property="intro"/>
+        <result column="collect_post" property="collect_post"/>
+    </resultMap>
+
+    <select id="getUserById" resultMap="UserResultMap">
+        select * from user where user_id=#{id}
+    </select>
+
+    <select id="getUserByTel" resultMap="UserResultMap">
+        select * from user where user_tel=#{tel}
+    </select>
+
+    <insert id="register">
+        insert into user (user_id,user_tel,user_password,register_time,sex) values (#{id},#{tel},#{password},#{time},'男')
+    </insert>
+
+
+</mapper>

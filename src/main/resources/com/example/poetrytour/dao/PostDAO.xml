@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.poetrytour.dao.PostDAO">
+    <resultMap id="PostResultMap" type="com.example.poetrytour.model.Post">
+        <id column="post_id" property="post_id"/>
+        <result column="post_title" property="post_title"/>
+        <result column="post_context" property="post_context"/>
+        <result column="post_time" property="post_time"/>
+        <result column="user_id" property="user_id"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="attraction" property="attraction"/>
+        <result column="post_love" property="post_love"/>
+        <result column="post_reading" property="post_reading"/>
+        <result column="post_collect" property="post_collect"/>
+    </resultMap>
+
+    <select id="getPostById" resultMap="PostResultMap">
+        select * from post where post_id=#{id}
+    </select>
+
+    <delete id="deletePost">
+        delete from post where post_id=#{id}
+    </delete>
+
+
+
+</mapper>
